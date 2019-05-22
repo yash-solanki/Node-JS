@@ -1,19 +1,19 @@
-var express = require('express')
-var parseurl = require('parseurl')
-var session = require('express-session')
-var app = express()
+let express = require('express')
+let parseurl = require('parseurl')
+let session = require('express-session')
+let app = express()
 app.use(session({
  secret: 'keyboard cat',
  resave: false,
  saveUninitialized: true
 }))
-var countMiddleware=function (req, res, next) {
- var views = req.session.views
+let countMiddleware=function (req, res, next) {
+ let views = req.session.views
  if (!views) {
  views = req.session.views = {}
  }
  // get the url pathname
- var pathname = parseurl(req).pathname
+ let pathname = parseurl(req).pathname
  // count the views
  views[pathname] = (views[pathname] || 0) + 1
  next()
